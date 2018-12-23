@@ -101,21 +101,15 @@ class Bishop(Piece):
                 else:
                     print "Invalid Movement"
         #elif self.col < new_col and self.row > new_row
+        return
 
-
-
-
-
-
-
-
-
-
-
-
-
+class Queen(Piece):
+    def move(self, new_col, new_row):
+        print "Queen"
 
         return
+
+
 
 
 p1 = Pawn("P","w",0,1)
