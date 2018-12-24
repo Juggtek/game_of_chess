@@ -91,16 +91,53 @@ class Bishop(Piece):
     def move(self, new_col, new_row):
         next_col = self.col
         next_row = self.row
-        if self.col < new_col and self.row < new_row:
+
+        if self.col < new_col and self.row < new_row and \
+           (new_col - self.col) == (new_row - self.row):
             while next_col != new_col and next_row != new_row:
                 next_col += 1
                 next_row += 1
                 if board[7-next_row][next_col] == "0 ":
                     self.movement(next_col, next_row)
-
                 else:
                     print "Invalid Movement"
-        #elif self.col < new_col and self.row > new_row
+            self.move_count += 1
+
+        elif self.col < new_col and self.row > new_row and \
+             (new_col - self.col) == (self.row - new_row):
+            while next_col != new_col and next_row != new_row:
+                next_col += 1
+                next_row -= 1
+                if board[7-next_row][next_col] == "0 ":
+                    self.movement(next_col, next_row)
+                else:
+                    print "Invalid Movement"
+            self.move_count += 1
+
+        elif self.col > new_col and self.row < new_row and \
+             (self.col - new_col) == (new_row - self.row):
+            while next_col != new_col and next_row != new_row:
+                next_col -= 1
+                next_row += 1
+                if board[7-next_row][next_col] == "0 ":
+                    self.movement(next_col, next_row)
+                else:
+                    print "Invalid Movement"
+            self.move_count += 1
+
+        elif self.col > new_col and self.row > new_row and \
+             (self.col - new_col) == (self.row - new_row):
+            while next_col != new_col and next_row != new_row:
+                next_col -= 1
+                next_row -= 1
+                if board[7-next_row][next_col] == "0 ":
+                    self.movement(next_col, next_row)
+                else:
+                    print "Invalid Movement"
+            self.move_count += 1
+
+        else:
+            print "Invalid Movement"
         return
 
 class Queen(Piece):
@@ -134,8 +171,13 @@ k1.position()
 k2.position()
 b1 = Bishop("B","w",2,0)
 b1.position()
+b2 = Bishop("B","w",5,0)
+b2.position()
 
 p4.move(3,2)
-b1.move(7,4)
+
+
+
+
 
 print board
