@@ -100,7 +100,7 @@ class Bishop(Piece):
                 if board[7-next_row][next_col] == "0 ":
                     self.movement(next_col, next_row)
                 else:
-                    print "Invalid Movement"
+                    print "Invalid Movement!"
             self.move_count += 1
 
         elif self.col < new_col and self.row > new_row and \
@@ -111,7 +111,7 @@ class Bishop(Piece):
                 if board[7-next_row][next_col] == "0 ":
                     self.movement(next_col, next_row)
                 else:
-                    print "Invalid Movement"
+                    print "Invalid Movement!"
             self.move_count += 1
 
         elif self.col > new_col and self.row < new_row and \
@@ -122,7 +122,7 @@ class Bishop(Piece):
                 if board[7-next_row][next_col] == "0 ":
                     self.movement(next_col, next_row)
                 else:
-                    print "Invalid Movement"
+                    print "Invalid Movement!"
             self.move_count += 1
 
         elif self.col > new_col and self.row > new_row and \
@@ -133,11 +133,11 @@ class Bishop(Piece):
                 if board[7-next_row][next_col] == "0 ":
                     self.movement(next_col, next_row)
                 else:
-                    print "Invalid Movement"
+                    print "Invalid Movement!"
             self.move_count += 1
 
         else:
-            print "Invalid Movement"
+            print "Invalid Movement!"
         return
 
 class Queen(Piece):
