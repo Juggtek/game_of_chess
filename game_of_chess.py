@@ -98,9 +98,12 @@ class Bishop(Piece):
                 next_col += 1
                 next_row += 1
                 if board[7-next_row][next_col] == "0 ":
-                    self.movement(next_col, next_row)
+                    pass
                 else:
                     print "Invalid Movement!"
+            next_col = self.col
+            next_row = self.row
+            self.movement(next_col, next_row)
             self.move_count += 1
 
         elif self.col < new_col and self.row > new_row and \
@@ -109,9 +112,12 @@ class Bishop(Piece):
                 next_col += 1
                 next_row -= 1
                 if board[7-next_row][next_col] == "0 ":
-                    self.movement(next_col, next_row)
+                    pass
                 else:
                     print "Invalid Movement!"
+            next_col = self.col
+            next_row = self.row
+            self.movement(next_col, next_row)
             self.move_count += 1
 
         elif self.col > new_col and self.row < new_row and \
@@ -120,9 +126,12 @@ class Bishop(Piece):
                 next_col -= 1
                 next_row += 1
                 if board[7-next_row][next_col] == "0 ":
-                    self.movement(next_col, next_row)
+                    pass
                 else:
                     print "Invalid Movement!"
+            next_col = self.col
+            next_row = self.row
+            self.movement(next_col, next_row)
             self.move_count += 1
 
         elif self.col > new_col and self.row > new_row and \
@@ -131,9 +140,12 @@ class Bishop(Piece):
                 next_col -= 1
                 next_row -= 1
                 if board[7-next_row][next_col] == "0 ":
-                    self.movement(next_col, next_row)
+                    pass
                 else:
                     print "Invalid Movement!"
+            next_col = self.col
+            next_row = self.row
+            self.movement(next_col, next_row)
             self.move_count += 1
 
         else:
@@ -239,9 +251,26 @@ b1.position()
 b2 = Bishop("B","w",5,0)
 b2.position()
 
+pb1 = Pawn("P","b",0,6)
+pb2 = Pawn("P","b",1,6)
+pb3 = Pawn("P","b",2,6)
+pb4 = Pawn("P","b",3,6)
+pb5 = Pawn("P","b",4,6)
+pb6 = Pawn("P","b",5,6)
+pb7 = Pawn("P","b",6,6)
+pb8 = Pawn("P","b",7,6)
+pb1.position()
+pb2.position()
+pb3.position()
+pb4.position()
+pb5.position()
+pb6.position()
+pb7.position()
+pb8.position()
+
+
 p4.move(3,2)
-
-
+b1.move(5,3)
 
 
 
