@@ -29,7 +29,7 @@ white_bishop_2 = Bishop(board,"B","w",5,0)
 
 black_pawns = [None] * 8
 for i in range(0,8):
-    black_pawns[i] = Pawn(board, "P", "w",i,1)
+    black_pawns[i] = Pawn(board, "P", "b",i,6)
 
 
 white_pawns[3].move(3,2)
@@ -41,7 +41,10 @@ white_bishop_1.move(4,4)
 print board
 white_bishop_1.move(3,3)
 print board
-white_bishop_1.move(1,1)
-
+white_bishop_1.capture(6,6)
+print board
+white_bishop_1.move(5,7)
+print board
+white_bishop_1.capture(4,6)
 
 print board
