@@ -17,4 +17,8 @@ class Piece:
         self.col = new_col
         self.row = new_row
         self.board[7-self.row][self.col] = self.name + self.colour
+        self.move_count += 1
         return
+
+    def get_position(self):
+        return self.col, self.row
