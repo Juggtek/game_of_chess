@@ -7,15 +7,9 @@ from board_pieces.pawn import Pawn
 from board_pieces.knight import Knight
 from board_pieces.bishop import Bishop
 from board_pieces.rook import Rook
+from board_pieces.queen import Queen
 
 board = np.array([["0 "]*8]*8)
-
-
-class Queen(Piece):
-    def move(self, new_col, new_row):
-        print "Queen"
-
-        return
 
 
 
@@ -28,6 +22,7 @@ white_bishop_1 = Bishop(board,"B","w",2,0)
 white_bishop_2 = Bishop(board,"B","w",5,0)
 white_rook_1 = Rook(board,"R","w",0,0)
 white_rook_2 = Rook(board,"R","w",7,0)
+white_queen = Queen(board,"Q","b",3,0)
 
 black_pawns = [None] * 8
 for i in range(0,8):
@@ -35,10 +30,4 @@ for i in range(0,8):
 
 
 white_pawns[3].move(3,2)
-
 print board, "\n"
-white_bishop_1.move(5,3)
-
-
-
-print board
