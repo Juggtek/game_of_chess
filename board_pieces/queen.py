@@ -1,4 +1,7 @@
 from piece import Piece
+import imp
+move_error = imp.load_source('move_error.py', '/home/felix/game_of_chess/helper_func/move_error.py')
+capture_error = imp.load_source('capture_error.py', '/home/felix/game_of_chess/helper_func/capture_error.py')
 
 class Queen(Piece):
     def move(self, new_col, new_row):
@@ -10,7 +13,7 @@ class Queen(Piece):
                next_col == new_col:
                     self.movement(next_col, next_row)
             elif self.board[7-next_row][next_col] != "0 ":
-                print "Invalid Movement!"
+                move_error.print_move_error()
 
         if self.col < new_col and self.row < new_row and \
            (new_col - self.col) == (new_row - self.row):
@@ -48,7 +51,7 @@ class Queen(Piece):
                        row == new_row:
                        self.movement(new_col, new_row)
                     elif self.board[7-row][self.col] != "0 ":
-                        print "Invalid Movement!"
+                        move_error.print_move_error()
                         break
 
             elif self.row > new_row:
@@ -57,7 +60,7 @@ class Queen(Piece):
                        row == new_row:
                        self.movement(new_col, new_row)
                     elif self.board[7-row][self.col] != "0 ":
-                        print "Invalid Movement!"
+                        move_error.print_move_error()
                         break
 
         elif self.col != new_col and self.row == new_row:
@@ -67,7 +70,7 @@ class Queen(Piece):
                        col == new_col:
                        self.movement(new_col, new_row)
                     elif self.board[7-self.row][col] != "0 ":
-                        print "Invalid Movement!"
+                        move_error.print_move_error()
                         break
 
             elif self.col > new_col:
@@ -76,10 +79,10 @@ class Queen(Piece):
                        col == new_col:
                        self.movement(new_col, new_row)
                     elif self.board[7-self.row][col] != "0 ":
-                        print "Invalid Movement!"
+                        move_error.print_move_error()
                         break
         else:
-            print "Invalid Movement!"
+            move_error.print_move_error()
 
     def capture(self, new_col, new_row):
         #bishop capture
@@ -88,18 +91,18 @@ class Queen(Piece):
         def check_cell(next_col, next_row):
             if self.board[7-next_row][next_col] != "0 " and \
                next_col != new_col:
-               print "Invalid Movement!"
+               move_error.print_move_error()
             elif self.board[7-next_row][next_col] != "0 " and \
                  self.board[7-next_row][next_col][1] != self.colour and \
                  next_col == new_col:
-                    self.movement(next_col, next_row)
+                self.movement(next_col, next_row)
             elif self.board[7-next_row][next_col] == "0 " and \
                  next_col == new_col:
-                print "Nothing to capture"
+                move_error.print_move_error()
             elif self.board[7-next_row][next_col] != "0 " and \
                  self.board[7-next_row][next_col][1] == self.colour and \
                  next_col == new_col:
-                 print "Invalid Movement!"
+                 ove_error.print_move_error()
 
         if self.col < new_col and self.row < new_row and \
            (new_col - self.col) == (new_row - self.row):
@@ -138,7 +141,7 @@ class Queen(Piece):
                        row == new_row:
                        self.movement(new_col, new_row)
                     elif self.board[7-row][self.col] != "0 ":
-                        print "Invalid Movement!"
+                        move_error.print_move_error()
                         break
 
             elif self.row > new_row:
@@ -148,7 +151,7 @@ class Queen(Piece):
                        row == new_row:
                        self.movement(new_col, new_row)
                     elif self.board[7-row][self.col] != "0 ":
-                        print "Invalid Movement!"
+                        move_error.print_move_error()
                         break
 
         elif self.col != new_col and self.row == new_row:
@@ -159,7 +162,7 @@ class Queen(Piece):
                        col == new_col:
                        self.movement(new_col, new_row)
                     elif self.board[7-self.row][col] != "0 ":
-                        print "Invalid Movement!"
+                        move_error.print_move_error()
                         break
 
             elif self.col > new_col:
@@ -170,8 +173,8 @@ class Queen(Piece):
                        col == new_col:
                        self.movement(new_col, new_row)
                     elif self.board[7-self.row][col] != "0 ":
-                        print "Invalid Movement!"
+                        move_error.print_move_error()
                         break
 
         else:
-            print "Invalid Movement!"
+            move_error.print_move_error()
