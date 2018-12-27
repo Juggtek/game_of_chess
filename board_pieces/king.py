@@ -1,4 +1,7 @@
 from piece import Piece
+import imp
+move_error = imp.load_source('move_error.py', '/home/felix/game_of_chess/helper_func/move_error.py')
+capture_error = imp.load_source('capture_error.py', '/home/felix/game_of_chess/helper_func/capture_error.py')
 
 class King(Piece):
     def move(self, new_col, new_row):
@@ -25,10 +28,10 @@ class King(Piece):
         elif self.board[7-new_row][new_col][1] == self.colour or \
              new_col > self.col + 1 or new_row > self.row + 1 or \
              (self.col == new_col and self.row == new_row):
-            print "Invalid Movement"
+            move_error.print_move_error()
 
         else:
-            print "Invalid Movement"
+            move_error.print_move_error()
 
 
     def capture(self, new_col, new_row):
@@ -56,7 +59,7 @@ class King(Piece):
         elif self.board[7-new_row][new_col][1] == self.colour or \
              new_col > self.col + 1 or new_row > self.row + 1 or \
              (self.col == new_col and self.row == new_row):
-            print "Invalid Movement"
+            move_error.print_move_error()
 
         else:
-            print "Invalid Movement"
+            move_error.print_move_error()

@@ -33,3 +33,7 @@ for i in range(0,8):
 
 white_pawns[3].move(3,2)
 print board, "\n"
+white_pawns[2].capture(3,2)
+print board, "\n"
+white_pawns[2].move(3,1)
+print board, "\n"
