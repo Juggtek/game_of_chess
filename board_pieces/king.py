@@ -63,3 +63,27 @@ class King(Piece):
 
         else:
             move_error.print_move_error()
+
+    def castle(self, new_col, new_row = self.row):
+        if self.colour == "w"
+           (new_col == self.col + 2 ^ new_col == self.col - 2) and \
+           new_row == self.row and \
+           self.board[7-self.row][new_col] == "R" + self.colour and \
+           ((
+           self.board[7-self.row][new_col-1] == "0 " and self.board[7-self.row][new_col-2] == "0 " \
+           ) ^ ( \
+           self.board[7-self.row][new_col+1] == "0 " and self.board[7-self.row][new_col+2] == "0 " and self.board[7-self.row][new_col+3] == "0 " \
+           )):
+           self.movement(new_col, self.row)
+        elif self.colour == "b"
+             (new_col == self.col + 2 ^ new_col == self.col - 2) and \
+             new_row == self.row and \
+             self.board[7-self.row][new_col] == "R" + self.colour and \
+             ((
+             self.board[7-self.row][new_col-1] == "0 " and self.board[7-self.row][new_col-2] == "0 " and self.board[7-self.row][new_col-3] == "0 " \
+             ) ^ ( \
+             self.board[7-self.row][new_col+1] == "0 " and self.board[7-self.row][new_col+2] == "0 " \
+             )):
+             self.movement(new_col, self.row)
+        else:
+            move_error.print_move_error()
