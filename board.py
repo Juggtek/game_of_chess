@@ -9,8 +9,8 @@ class Board:
         self.board = [ [Cell() for i in range(8)] for j in range(8)]
 
         for i in range(0,8):
-            self.board[i][1].set_piece(Pawn(self.board,"P","w",i,1))
-            self.board[i][6].set_piece(Pawn(self.board,"P","b",i,6))
+            self.board[i][7-1].set_piece(Pawn(self.board,"P","w",i,1))
+            self.board[i][7-6].set_piece(Pawn(self.board,"P","b",i,6))
         # white_knight_1 = Knight(board,"K","w",1,0)
         # white_knight_2 = Knight(board,"K","w",6,0)
         # white_bishop_1 = Bishop(board,"B","w",2,0)
@@ -28,7 +28,7 @@ class Board:
         tmp = ""
         for row in range(0,8):
             for col in range(0,8):
-                tmp += get_piece_initials(self.board[7-col][row].piece) +" "
+                tmp += get_piece_initials(self.board[col][row]).ljust(3)
             tmp += "\n"
         tmp += "\n"
         return tmp

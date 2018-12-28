@@ -30,3 +30,6 @@ class Pawn(Piece):
         else:
             capture_error.print_capture_error()
     # TODO Transformation missing
+
+    def __repr__(self):
+        return "P" + self.colour

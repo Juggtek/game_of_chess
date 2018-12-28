@@ -20,3 +20,6 @@ class Piece(cell.Cell):
 
     def get_position(self):
         return self.col, self.row
+
+    def __repr__(self):
+        return "%"
