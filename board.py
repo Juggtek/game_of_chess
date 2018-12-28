@@ -1,5 +1,3 @@
-import numpy as np
-
 from helper_func.repr_helper import get_piece_initials
 from board_pieces.pawn import Pawn
 from board_pieces.cell import Cell

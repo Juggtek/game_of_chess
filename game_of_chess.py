@@ -1,4 +1,4 @@
-"""Game of Chess""" 
+"""Game of Chess"""
 from math import *
 
 
@@ -15,4 +15,4 @@ from board import Board, Cell
 board = Board()
 print board, "\n"
 
-# board.move(0,0)
+# board.move(0,0,1,1)
