@@ -4,6 +4,9 @@ move_error = imp.load_source('move_error.py', '/home/felix/game_of_chess/helper_
 capture_error = imp.load_source('capture_error.py', '/home/felix/game_of_chess/helper_func/capture_error.py')
 
 class King(Piece):
+    def __repr__(self):
+        return "K" + self.colour
+
     def move(self, new_col, new_row):
         if  (
             self.col + 1 == new_col and self.row == new_row \

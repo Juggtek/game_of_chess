@@ -1,5 +1,5 @@
 from piece import Piece
-import imp
+import imp # TODO https://stackoverflow.com/questions/67631/how-to-import-a-module-given-the-full-path
 move_error = imp.load_source('move_error.py', '/home/felix/game_of_chess/helper_func/move_error.py')
 capture_error = imp.load_source('capture_error.py', '/home/felix/game_of_chess/helper_func/capture_error.py')
 
