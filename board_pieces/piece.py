@@ -11,11 +11,11 @@ class Piece(Cell):
         self.move_count = 0
         self.board = board
 
-    def movement(self, new_col, new_row):
-        self.board[self.col][7-self.row].set_piece(None) # = Cell()
-        self.col = new_col
-        self.row = new_row
-        self.board[self.col][7-self.row].set_piece(self) # = self.board[7-self.row][self.col].set_piece(self)
+    def movement(self, to_col, to_row):
+        self.board[self.col][7-self.row].set_piece(None)
+        self.col = to_col
+        self.row = to_row
+        self.board[self.col][7-self.row].set_piece(self)
         self.move_count += 1
         print "Moved!"
         return

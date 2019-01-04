@@ -1,6 +1,8 @@
 from helper_func.repr_helper import get_piece_initials
+from helper_func.move_error import print_move_error
 from board_pieces.pawn import Pawn
 from board_pieces.cell import Cell
+
 
 class Board:
     def __init__(self):
@@ -32,7 +34,10 @@ class Board:
         return tmp
 
     def move(self,from_col, from_row, to_col, to_row):
-        self.board[from_col][7-from_row].piece.try_to_move(to_col, to_row)
+        if self.board[from_col][7-from_row].piece.try_move(to_col, to_row):
+            self.board[from_col][7-from_row].piece.movement(to_col, to_row)
+        else:
+            print_move_error()
 
 
     # def move(self, fromCol, fromRow, toCol, toRow):
