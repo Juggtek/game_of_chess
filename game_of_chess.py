@@ -31,5 +31,5 @@ board.move(4,4,4,3)
 print board, "\n"
 board.move(4,3,4,2)
 print board, "\n"
-board.move(4,2,5,1)
+board.move(4,2,4,1)
 print board, "\n"

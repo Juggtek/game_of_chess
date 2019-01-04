@@ -1,7 +1,8 @@
-import imp
-cell = imp.load_source('cell.py', '/home/felix/game_of_chess/board_pieces/cell.py')
+import sys
+sys.path.append('/home/felix/game_of_chess')
+from board_pieces.cell import Cell
 
-class Piece(cell.Cell):
+class Piece(Cell):
     def __init__(self, board, name, colour, col, row):
         self.name = name
         self.colour = colour
