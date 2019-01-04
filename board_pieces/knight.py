@@ -1,36 +1,30 @@
 from piece import Piece
-import sys
-sys.path.append('/home/felix/game_of_chess')
-from helper_func.move_error import print_move_error
 
 class Knight(Piece):
-    def move(self, new_col, new_row):
-        if self.board[7-new_row][new_col] == "0 " and \
-           ((new_col == self.col + 1 and new_row == self.row + 2) or \
-           (new_col == self.col + 1 and new_row == self.row - 2) or \
-           (new_col == self.col + 2 and new_row == self.row + 1) or \
-           (new_col == self.col + 2 and new_row == self.row - 1) or \
-           (new_col == self.col - 1 and new_row == self.row + 2) or \
-           (new_col == self.col - 1 and new_row == self.row - 2) or \
-           (new_col == self.col - 2 and new_row == self.row + 1) or \
-           (new_col == self.col - 2 and new_row == self.row - 1)):
-            self.movement(new_col, new_row)
-            self.move_count += 1
+    def try_move(self, to_col, to_row):
+        if self.board[to_col][7-to_row].__repr__() == "0" and \
+           ((to_col == self.col + 1 and to_row == self.row + 2) or \
+           (to_col == self.col + 1 and to_row == self.row - 2) or \
+           (to_col == self.col + 2 and to_row == self.row + 1) or \
+           (to_col == self.col + 2 and to_row == self.row - 1) or \
+           (to_col == self.col - 1 and to_row == self.row + 2) or \
+           (to_col == self.col - 1 and to_row == self.row - 2) or \
+           (to_col == self.col - 2 and to_row == self.row + 1) or \
+           (to_col == self.col - 2 and to_row == self.row - 1)):
+            return True
+        elif (self.board[to_col][7-to_row].__repr__() != "0" and \
+           (self.board[to_col][7-to_row].piece.colour != self.board[self.col][7-self.row].piece.colour)) and \
+           ((to_col == self.col + 1 and to_row == self.row + 2) or \
+           (to_col == self.col + 1 and to_row == self.row - 2) or \
+           (to_col == self.col + 2 and to_row == self.row + 1) or \
+           (to_col == self.col + 2 and to_row == self.row - 1) or \
+           (to_col == self.col - 1 and to_row == self.row + 2) or \
+           (to_col == self.col - 1 and to_row == self.row - 2) or \
+           (to_col == self.col - 2 and to_row == self.row + 1) or \
+           (to_col == self.col - 2 and to_row == self.row - 1)):
+            return True
         else:
-            print_move_error()
+            return False
 
-    def capture(self, new_col, new_row):
-        if self.board[7-new_row][new_col][1] != "0 " and \
-           self.board[7-new_row][new_col][1] != self.colour and \
-           ((new_col == self.col + 1 and new_row == self.row + 2) or \
-           (new_col == self.col + 1 and new_row == self.row - 2) or \
-           (new_col == self.col + 2 and new_row == self.row + 1) or \
-           (new_col == self.col + 2 and new_row == self.row - 1) or \
-           (new_col == self.col - 1 and new_row == self.row + 2) or \
-           (new_col == self.col - 1 and new_row == self.row - 2) or \
-           (new_col == self.col - 2 and new_row == self.row + 1) or \
-           (new_col == self.col - 2 and new_row == self.row - 1)):
-            self.movement(new_col, new_row)
-            self.move_count += 1
-        else:
-            print_move_error()
+    def __repr__(self):
+        return "N" + self.colour
