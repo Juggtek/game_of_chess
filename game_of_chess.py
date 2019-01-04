@@ -15,4 +15,21 @@ from board import Board, Cell
 board = Board()
 print board, "\n"
 
-# board.move(0,0,1,1)
+board.move(0,1,0,2)
+print board, "\n"
+board.move(2,1,2,3)
+print board, "\n"
+board.move(2,3,2,4)
+print board, "\n"
+board.move(2,4,2,5)
+print board, "\n"
+board.move(2,5,1,6)
+print board, "\n"
+board.move(4,6,4,4)
+print board, "\n"
+board.move(4,4,4,3)
+print board, "\n"
+board.move(4,3,4,2)
+print board, "\n"
+board.move(4,2,5,1)
+print board, "\n"

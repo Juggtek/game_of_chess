@@ -31,5 +31,9 @@ class Board:
         tmp += "\n"
         return tmp
 
+    def move(self,from_col, from_row, to_col, to_row):
+        self.board[from_col][7-from_row].piece.try_to_move(to_col, to_row)
+
+
     # def move(self, fromCol, fromRow, toCol, toRow):
     #     self.board[ocl][row].piece.try_to_move()
