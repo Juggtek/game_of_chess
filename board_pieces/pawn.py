@@ -1,7 +1,7 @@
 from piece import Piece
 
 class Pawn(Piece):
-    def try_move(self, to_col, to_row):
+    def try_movement(self, to_col, to_row):
         if self.colour == "w":
             if (
                     self.move_count == 0 and \

@@ -16,8 +16,13 @@ class Board:
             self.board[i][7-6].set_piece(Pawn(self.board,"P","b",i,6))
         self.board[2][7-0].set_piece(Knight(self.board,"K","w",2,0))
         self.board[5][7-0].set_piece(Knight(self.board,"K","w",5,0))
-        # white_bishop_1 = Bishop(board,"B","w",2,0)
-        # white_bishop_2 = Bishop(board,"B","w",5,0)
+        self.board[2][7-7].set_piece(Knight(self.board,"K","b",2,7))
+        self.board[5][7-7].set_piece(Knight(self.board,"K","b",5,7))
+        self.board[1][7-0].set_piece(Bishop(self.board,"B","w",1,0))
+        self.board[6][7-0].set_piece(Bishop(self.board,"B","w",6,0))
+        self.board[1][7-7].set_piece(Bishop(self.board,"B","b",1,7))
+        self.board[6][7-7].set_piece(Bishop(self.board,"B","b",6,7))
+
         # white_rook_1 = Rook(board,"R","w",0,0)
         # white_rook_2 = Rook(board,"R","w",7,0)
         # white_queen = Queen(board,"Q","w",3,0)
@@ -37,7 +42,7 @@ class Board:
         return tmp
 
     def move(self,from_col, from_row, to_col, to_row):
-        if self.board[from_col][7-from_row].piece.try_move(to_col, to_row):
+        if self.board[from_col][7-from_row].piece.try_movement(to_col, to_row):
             self.board[from_col][7-from_row].piece.movement(to_col, to_row)
         else:
             print_move_error()
