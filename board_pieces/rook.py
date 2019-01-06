@@ -1,94 +1,82 @@
 from piece import Piece
-import imp
-move_error = imp.load_source('move_error.py', '/home/felix/game_of_chess/helper_func/move_error.py')
-capture_error = imp.load_source('capture_error.py', '/home/felix/game_of_chess/helper_func/capture_error.py')
 
 class Rook(Piece):
-    def move(self, new_col, new_row):
-        if self.col == new_col and self.row != new_row:
-            if self.row < new_row:
-                for row in range(self.row+1, new_row+1):
-                    if self.board[7-row][self.col] == "0 " and \
-                       row == new_row:
-                       self.movement(new_col, new_row)
-                    elif self.board[7-row][self.col] != "0 ":
-                        move_error.print_move_error()
+    def try_movement(self, to_col, to_row):
+        if self.col == to_col and self.row != to_row:
+            if self.row < to_row:
+                for row in range(self.row + 1, to_row + 1):
+                    if self.board[self.col][7-row].__repr__() == "0" and \
+                       row <= to_row:
+                        bool = True
+                    elif self.board[self.col][7-row].__repr__() != "0" and \
+                       self.board[self.col][7-row].piece.colour != self.colour and \
+                       row == to_row:
+                        bool = True
+                    elif self.board[self.col][7-row].__repr__() != "0" and \
+                       self.board[self.col][7-row].piece.colour != self.colour and \
+                       row < to_row:
+                        bool = False
+                        break
+                    else:
+                        bool = False
                         break
 
-            elif self.row > new_row:
-                for row in range(self.row-1, new_row-1, -1):
-                    if self.board[7-row][self.col] == "0 " and \
-                       row == new_row:
-                       self.movement(new_col, new_row)
-                    elif self.board[7-row][self.col] != "0 ":
-                        move_error.print_move_error()
+            elif self.row > to_row:
+                for row in range(self.row - 1, to_row - 1, -1):
+                    if self.board[self.col][7-row].__repr__() == "0" and \
+                       row >= to_row:
+                        bool = True
+                    elif self.board[self.col][7-row].__repr__() != "0" and \
+                       self.board[self.col][7-row].piece.colour != self.colour and \
+                       row == to_row:
+                        bool = True
+                    elif self.board[self.col][7-row].__repr__() != "0" and \
+                       self.board[self.col][7-row].piece.colour != self.colour and \
+                       row > to_row:
+                        bool = False
+                        break
+                    else:
+                        bool = False
                         break
 
-        elif self.col != new_col and self.row == new_row:
-            if self.col < new_col:
-                for col in range(self.col+1, new_col+1):
-                    if self.board[7-self.row][col] == "0 " and \
-                       col == new_col:
-                       self.movement(new_col, new_row)
-                    elif self.board[7-self.row][col] != "0 ":
-                        move_error.print_move_error()
+        elif self.col != to_col and self.row == to_row:
+            if self.col < to_col:
+                for col in range(self.col + 1, to_col + 1):
+                    if self.board[col][7-self.row].__repr__() == "0" and \
+                       col <= to_col:
+                        bool = True
+                    elif self.board[col][7-self.row].__repr__() != "0" and \
+                       self.board[col][7-self.row].piece.colour != self.colour and \
+                       col == to_col:
+                        bool = True
+                    elif self.board[col][7-self.row].__repr__() != "0" and \
+                       self.board[col][7-self.row].piece.colour != self.colour and \
+                       col < to_col:
+                        bool = False
+                        break
+                    else:
+                        return False
                         break
 
-            elif self.col > new_col:
-                for col in range(self.col-1, new_col-1, -1):
-                    if self.board[7-self.row][col] == "0 " and \
-                       col == new_col:
-                       self.movement(new_col, new_row)
-                    elif self.board[7-self.row][col] != "0 ":
-                        move_error.print_move_error()
+            elif self.col > to_col:
+                for col in range(self.col - 1, to_col - 1, -1):
+                    if self.board[col][7-self.row].__repr__() == "0" and \
+                       col >= to_col:
+                        bool = True
+                    elif self.board[col][7-self.row].__repr__() != "0" and \
+                       self.board[col][7-self.row].piece.colour != self.colour and \
+                       col == to_col:
+                        bool = True
+                    elif self.board[col][7-self.row].__repr__() != "0" and \
+                       self.board[col][7-self.row].piece.colour != self.colour and \
+                       col > to_col:
+                        bool = False
+                    else:
+                        return False
                         break
-
         else:
-            move_error.print_move_error()
+            bool = False
+        return bool
 
-    def capture(self, new_col, new_row):
-        if self.col == new_col and self.row != new_row:
-            if self.row < new_row:
-                for row in range(self.row+1, new_row+1):
-                    if self.board[7-row][self.col] != "0 " and \
-                       self.board[7-row][self.col][1] != self.colour and \
-                       row == new_row:
-                       self.movement(new_col, new_row)
-                    elif self.board[7-row][self.col] != "0 ":
-                        move_error.print_move_error()
-                        break
-
-            elif self.row > new_row:
-                for row in range(self.row-1, new_row-1, -1):
-                    if self.board[7-row][self.col] != "0 " and \
-                       self.board[7-row][self.col][1] != self.colour and \
-                       row == new_row:
-                       self.movement(new_col, new_row)
-                    elif self.board[7-row][self.col] != "0 ":
-                        move_error.print_move_error()
-                        break
-
-        elif self.col != new_col and self.row == new_row:
-            if self.col < new_col:
-                for col in range(self.col+1, new_col+1):
-                    if self.board[7-self.row][col] != "0 " and \
-                       self.board[7-self.row][col][1] != self.colour and \
-                       col == new_col:
-                       self.movement(new_col, new_row)
-                    elif self.board[7-self.row][col] != "0 ":
-                        move_error.print_move_error()
-                        break
-
-            elif self.col > new_col:
-                for col in range(self.col-1, new_col-1, -1):
-                    print col
-                    if self.board[7-self.row][col] != "0 " and \
-                       self.board[7-self.row][col][1] != self.colour and \
-                       col == new_col:
-                       self.movement(new_col, new_row)
-                    elif self.board[7-self.row][col] != "0 ":
-                        move_error.print_move_error()
-                        break
-
-        else:
-            move_error.print_move_error()
+    def __repr__(self):
+        return "R" + self.colour

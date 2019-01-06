@@ -4,6 +4,7 @@ from board_pieces.cell import Cell
 from board_pieces.pawn import Pawn
 from board_pieces.knight import Knight
 from board_pieces.bishop import Bishop
+from board_pieces.rook import Rook
 from board_pieces.queen import Queen
 #from board_pieces.king import King
 
@@ -22,7 +23,10 @@ class Board:
         self.board[6][7-0].set_piece(Bishop(self.board,"B","w",6,0))
         self.board[1][7-7].set_piece(Bishop(self.board,"B","b",1,7))
         self.board[6][7-7].set_piece(Bishop(self.board,"B","b",6,7))
-
+        self.board[0][7-0].set_piece(Rook(self.board,"R","w",0,0))
+        self.board[7][7-0].set_piece(Rook(self.board,"R","w",7,0))
+        self.board[0][7-7].set_piece(Rook(self.board,"R","b",0,7))
+        self.board[7][7-7].set_piece(Rook(self.board,"R","b",7,7))
         # white_rook_1 = Rook(board,"R","w",0,0)
         # white_rook_2 = Rook(board,"R","w",7,0)
         # white_queen = Queen(board,"Q","w",3,0)
