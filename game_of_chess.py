@@ -15,9 +15,7 @@ from board import Board, Cell
 board = Board()
 print board
 
-board.move(0,1,0,3)
-board.move(0,0,0,2)
-board.move(0,2,7,2)
-board.move(7,2,1,2)
-board.move(1,2,1,6)
-board.move(1,6,3,6)
+board.move(4,1,4,2)
+board.move(3,0,5,2)
+board.move(5,2,5,0)
+board.move(5,2,4,2)

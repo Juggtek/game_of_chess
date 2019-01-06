@@ -27,9 +27,8 @@ class Board:
         self.board[7][7-0].set_piece(Rook(self.board,"R","w",7,0))
         self.board[0][7-7].set_piece(Rook(self.board,"R","b",0,7))
         self.board[7][7-7].set_piece(Rook(self.board,"R","b",7,7))
-        # white_rook_1 = Rook(board,"R","w",0,0)
-        # white_rook_2 = Rook(board,"R","w",7,0)
-        # white_queen = Queen(board,"Q","w",3,0)
+        self.board[3][7-0].set_piece(Queen(self.board,"Q","w",3,0))
+        self.board[3][7-7].set_piece(Queen(self.board,"Q","b",3,7))
         # white_king = King(board,"K","w",2,0)
         #
         # black_pawns = [None] * 8

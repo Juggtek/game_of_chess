@@ -1,3 +1,4 @@
+*.pyc
 bishop.pyc
 cell.pyc
 king.pyc

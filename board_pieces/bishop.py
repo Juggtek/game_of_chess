@@ -41,7 +41,6 @@ class Bishop(Piece):
             else:
                 bool = False
                 break
-
         return bool
 
     def __repr__(self):
