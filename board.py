@@ -39,14 +39,14 @@ class Board:
                 tmp += get_piece_initials(self.board[col][row]).ljust(3)
             tmp += "\n"
         tmp += "\n"
-        return tmp
+        return "\n" + tmp + "\n"
 
     def move(self,from_col, from_row, to_col, to_row):
         if self.board[from_col][7-from_row].piece.try_movement(to_col, to_row):
+            print "Moved from %s %s to %s %s" % (from_col, from_row, to_col, to_row)
             self.board[from_col][7-from_row].piece.movement(to_col, to_row)
+            print self.__repr__()
         else:
+            print "Moved from %s %s to %s %s" % (from_col, from_row, to_col, to_row)
             print_move_error()
-
-
-    # def move(self, fromCol, fromRow, toCol, toRow):
-    #     self.board[ocl][row].piece.try_to_move()
+            print self.__repr__()

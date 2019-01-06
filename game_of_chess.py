@@ -13,23 +13,14 @@ from board import Board, Cell
 #board = np.array([["0 "]*8]*8)
 
 board = Board()
-print board, "\n"
+print board
 
 board.move(2,1,2,2)
-print board, "\n"
 board.move(1,0,3,2)
-print board, "\n"
 board.move(3,2,1,4)
-print board, "\n"
 board.move(1,4,2,5)
-print board, "\n"
 board.move(2,5,5,2)
-print board, "\n"
 board.move(5,2,4,3)
-print board, "\n"
 board.move(4,3,6,1)
-print board, "\n"
 board.move(4,3,1,6)
-print board, "\n"
 board.move(1,6,6,1)
-print board, "\n"

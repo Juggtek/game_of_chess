@@ -17,7 +17,6 @@ class Piece(Cell):
         self.row = to_row
         self.board[self.col][7-self.row].set_piece(self)
         self.move_count += 1
-        print "Moved!"
         return
 
     def get_position(self):
