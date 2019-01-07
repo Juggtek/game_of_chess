@@ -19,8 +19,8 @@ class Piece(Cell):
         self.move_count += 1
         return
 
-    def get_position(self):
-        return self.col, self.row
+    def attack_cell(self, attack_col, attack_row):
+        self.board[attack_col][7-attack_row].under_attack_from = self.colour
 
     def __repr__(self):
         return "%"

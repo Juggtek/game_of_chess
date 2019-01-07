@@ -39,8 +39,6 @@ class Pawn(Piece):
         else:
             return False
 
-
-    # TODO only Ture or False output for try_to_move()
     # TODO Transformation missing
     # TODO en passant
 
