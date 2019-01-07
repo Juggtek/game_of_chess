@@ -1,1 +1,15 @@
 *.pyc
+bishop.pyc
+cell.pyc
+king.pyc
+knight.pyc
+pawn.pyc
+piece.pyc
+queen.pyc
+rook.pyc
+capture_error.pyc
+move_error.pyc
+repr_helper.pyc
+board.pyc
+game_of_chess.pyc
+__init__.pyc
