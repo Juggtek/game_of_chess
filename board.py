@@ -30,7 +30,7 @@ class Board:
         self.board[3][7-0].set_piece(Queen(self.board,"Q","w",3,0))
         self.board[3][7-7].set_piece(Queen(self.board,"Q","b",3,7))
         self.board[4][7-0].set_piece(King(self.board,"K","w",4,0))
-        self.board[4][7-7].set_piece(King(self.board,"K","w",4,7))
+        self.board[4][7-7].set_piece(King(self.board,"K","b",4,7))
 
     def __repr__(self):
         tmp = ""
