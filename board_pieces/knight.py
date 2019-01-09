@@ -26,5 +26,15 @@ class Knight(Piece):
         else:
             return False
 
+    def cells_attacked(self, col, row, colour):
+        if col == 0:
+            self.board[col+1][7-row+1].attack_cell("w")
+        elif col == 7:
+            self.board[col-1][7-row+1].attack_cell("w")
+        else:
+            self.board[col+1][7-row+1].attack_cell("w")
+            self.board[col-1][7-row+1].attack_cell("w")
+
+
     def __repr__(self):
         return "N" + self.colour

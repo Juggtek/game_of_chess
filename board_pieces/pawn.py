@@ -42,5 +42,23 @@ class Pawn(Piece):
     # TODO Transformation missing
     # TODO en passant
 
+    def cells_attacked(self, col, row, colour):
+        if colour == "w":
+            if col == 0:
+                self.board[col+1][7-row+1].attack_cell("w")
+            elif col == 7:
+                self.board[col-1][7-row+1].attack_cell("w")
+            else:
+                self.board[col+1][7-row+1].attack_cell("w")
+                self.board[col-1][7-row+1].attack_cell("w")
+        elif colour == "b":
+            if col == 0:
+                self.board[col+1][7-row-1].attack_cell("b")
+            elif col == 7:
+                self.board[col-1][7-row-1].attack_cell("b")
+            else:
+                self.board[col+1][7-row-1].attack_cell("b")
+                self.board[col-1][7-row-1].attack_cell("b")
+
     def __repr__(self):
         return "P" + self.colour

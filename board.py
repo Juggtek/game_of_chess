@@ -10,11 +10,13 @@ from board_pieces.king import King
 
 class Board:
     def __init__(self):
-        self.board = [ [Cell() for i in range(8)] for j in range(8)]
+        self.board = [[Cell() for i in range(8)] for j in range(8)]
 
         for i in range(0,8):
             self.board[i][7-1].set_piece(Pawn(self.board,"P","w",i,1))
+            self.board[i][7-1].piece.cells_attacked(i,7-1,"w")
             self.board[i][7-6].set_piece(Pawn(self.board,"P","b",i,6))
+            self.board[i][7-6].piece.cells_attacked(i,7-6,"b")
         self.board[1][7-0].set_piece(Knight(self.board,"N","w",1,0))
         self.board[6][7-0].set_piece(Knight(self.board,"N","w",6,0))
         self.board[1][7-7].set_piece(Knight(self.board,"N","b",1,7))
@@ -31,6 +33,9 @@ class Board:
         self.board[3][7-7].set_piece(Queen(self.board,"Q","b",3,7))
         self.board[4][7-0].set_piece(King(self.board,"K","w",4,0))
         self.board[4][7-7].set_piece(King(self.board,"K","b",4,7))
+
+        print self.board[0][5].attacked_from_white
+        print self.board[0][5].attacked_from_black
 
     def __repr__(self):
         tmp = ""
