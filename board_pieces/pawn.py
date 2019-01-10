@@ -1,4 +1,6 @@
 from piece import Piece
+from board_attack import BoardAttack
+board_attack = BoardAttack()
 
 class Pawn(Piece):
     def try_movement(self, to_col, to_row):
@@ -42,23 +44,26 @@ class Pawn(Piece):
     # TODO Transformation missing
     # TODO en passant
 
-    def cells_attacked(self, col, row, colour):
-        if colour == "w":
-            if col == 0:
-                self.board[col+1][7-row+1].attack_cell("w")
-            elif col == 7:
-                self.board[col-1][7-row+1].attack_cell("w")
+    # def cells_attacked(self, colour, att_or_stop):
+    #     try:
+    #         if colour == "w":
+    #             self.board[self.col+1][7-self.row+1].attack_cell("w", att_or_stop)
+    #             self.board[self.col-1][7-self.row+1].attack_cell("w", att_or_stop)
+    #         else:
+    #             self.board[self.col+1][7-self.row-1].attack_cell("b", att_or_stop)
+    #             self.board[self.col-1][7-self.row-1].attack_cell("b", att_or_stop)
+    #     except IndexError:
+    #         pass
+    def cells_attacked(self, col, row, att_or_stop):
+        try:
+            if self.colour == "w":
+                board_attack.attack_cell(col+1, row+1, self.colour, att_or_stop)
+                board_attack.attack_cell(col-1, row+1, self.colour, att_or_stop)
             else:
-                self.board[col+1][7-row+1].attack_cell("w")
-                self.board[col-1][7-row+1].attack_cell("w")
-        elif colour == "b":
-            if col == 0:
-                self.board[col+1][7-row-1].attack_cell("b")
-            elif col == 7:
-                self.board[col-1][7-row-1].attack_cell("b")
-            else:
-                self.board[col+1][7-row-1].attack_cell("b")
-                self.board[col-1][7-row-1].attack_cell("b")
+                board_attack.attack_cell(col+1, row-1, self.colour, att_or_stop)
+                board_attack.attack_cell(col-1, row-1, self.colour, att_or_stop)
+        except IndexError:
+            pass
 
     def __repr__(self):
         return "P" + self.colour

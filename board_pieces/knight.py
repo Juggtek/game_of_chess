@@ -26,14 +26,19 @@ class Knight(Piece):
         else:
             return False
 
-    def cells_attacked(self, col, row, colour):
-        if col == 0:
-            self.board[col+1][7-row+1].attack_cell("w")
-        elif col == 7:
-            self.board[col-1][7-row+1].attack_cell("w")
-        else:
-            self.board[col+1][7-row+1].attack_cell("w")
-            self.board[col-1][7-row+1].attack_cell("w")
+
+    # def cells_attacked(self, col, row, colour):
+    #     try:
+    #         self.board[col+1][7-row+2].attack_cell(colour)
+    #         self.board[col+1][7-row-2].attack_cell(colour)
+    #         self.board[col+2][7-row+1].attack_cell(colour)
+    #         self.board[col+2][7-row-1].attack_cell(colour)
+    #         self.board[col-1][7-row+2].attack_cell(colour)
+    #         self.board[col-1][7-row-2].attack_cell(colour)
+    #         self.board[col-2][7-row+1].attack_cell(colour)
+    #         self.board[col-2][7-row-1].attack_cell(colour)
+    #     except IndexError:
+    #         pass
 
 
     def __repr__(self):
