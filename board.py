@@ -34,15 +34,14 @@ class Board:
         self.board[4][7-0].set_piece(King(self.board,"K","w",4,0))
         self.board[4][7-7].set_piece(King(self.board,"K","b",4,7))
 
-        # for i in range(0,8):
-        #     self.board[i][7-1].piece.cells_attacked(i,7-1,"attack")
-        #     self.board[i][7-6].piece.cells_attacked(i,7-6,"attack")
-        self.board[0][7-1].piece.cells_attacked(0,1,"attack")
+        for i in range(0,8):
+            self.board[i][7-1].piece.cells_attacked(i,1,"attack")
+            self.board[i][7-6].piece.cells_attacked(i,6,"attack")
         # self.board[1][7-0].piece.cells_attacked(1,7-0,"w")
         # self.board[6][7-0].piece.cells_attacked(6,7-0,"w")
         # self.board[1][7-7].piece.cells_attacked(1,7-7,"b")
         # self.board[6][7-7].piece.cells_attacked(6,7-7,"b")
-
+        print board_attack
 
 
         # TODO attack_board repr
@@ -51,10 +50,10 @@ class Board:
         if self.board[from_col][7-from_row].piece.try_movement(to_col, to_row):
             print "Moved from %s %s to %s %s" % (from_col, from_row, to_col, to_row)
             #self.board[from_col][7-from_row].piece.cells_attacked(self.board[from_col][7-from_row].piece.colour, "retreat")
-            self.board[from_col][7-from_row].piece.cells_attacked(from_col, 7-from_row, "stop")
+            self.board[from_col][7-from_row].piece.cells_attacked(from_col, from_row, "stop")
             self.board[from_col][7-from_row].piece.movement(to_col, to_row)
             #self.board[to_col][7-to_row].piece.cells_attacked(self.board[to_col][7-to_row].piece.colour, "attack")
-            self.board[to_col][7-to_row].piece.cells_attacked(to_col, 7-to_row, "attack")
+            self.board[to_col][7-to_row].piece.cells_attacked(to_col, to_row, "attack")
             print self.__repr__()
         else:
             print "Moved from %s %s to %s %s" % (from_col, from_row, to_col, to_row)
