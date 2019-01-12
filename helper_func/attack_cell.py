@@ -1,4 +1,4 @@
-def attack_cell(board, row, col, att_or_stop):
+def attack_cell(board, col, row, att_or_stop):
     if att_or_stop == "attack" and \
        col >= 0 and col <= 7 and row >= 0 and row <=7:
         print "col ", col, " row ", row

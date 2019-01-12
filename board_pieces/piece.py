@@ -12,10 +12,10 @@ class Piece(Cell):
         self.board = board
 
     def movement(self, to_col, to_row):
-        self.board[self.col][7-self.row].set_piece(None)
+        self.board[self.col][self.row].set_piece(None)
         self.col = to_col
         self.row = to_row
-        self.board[self.col][7-self.row].set_piece(self)
+        self.board[self.col][self.row].set_piece(self)
         self.move_count += 1
         return
 
