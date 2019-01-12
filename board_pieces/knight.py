@@ -1,4 +1,7 @@
 from piece import Piece
+import sys
+sys.path.append('/home/felix/game_of_chess')
+from helper_func.attack_cell import attack_cell
 
 class Knight(Piece):
     def try_movement(self, to_col, to_row):
@@ -26,20 +29,16 @@ class Knight(Piece):
         else:
             return False
 
-
-    # def cells_attacked(self, col, row, colour):
-    #     try:
-    #         self.board[col+1][7-row+2].attack_cell(colour)
-    #         self.board[col+1][7-row-2].attack_cell(colour)
-    #         self.board[col+2][7-row+1].attack_cell(colour)
-    #         self.board[col+2][7-row-1].attack_cell(colour)
-    #         self.board[col-1][7-row+2].attack_cell(colour)
-    #         self.board[col-1][7-row-2].attack_cell(colour)
-    #         self.board[col-2][7-row+1].attack_cell(colour)
-    #         self.board[col-2][7-row-1].attack_cell(colour)
-    #     except IndexError:
-    #         pass
-
+    def cells_attacked(self, board, col, row, att_or_stop):
+        attack_cell(board, col+1, row+2, att_or_stop)
+        attack_cell(board, col+1, row-2, att_or_stop)
+        attack_cell(board, col+2, row+1, att_or_stop)
+        attack_cell(board, col+2, row-1, att_or_stop)
+        attack_cell(board, col-1, row+2, att_or_stop)
+        attack_cell(board, col-1, row-2, att_or_stop)
+        attack_cell(board, col-2, row+1, att_or_stop)
+        attack_cell(board, col-2, row-1, att_or_stop)
+        return board
 
     def __repr__(self):
         return "N" + self.colour

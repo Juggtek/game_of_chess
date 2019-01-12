@@ -1,4 +1,7 @@
 from piece import Piece
+import sys
+sys.path.append('/home/felix/game_of_chess')
+from helper_func.attack_cell import attack_cell
 
 class Bishop(Piece):
     def try_movement(self, to_col, to_row):
@@ -42,6 +45,51 @@ class Bishop(Piece):
                 bool = False
                 break
         return bool
+
+    def cells_attacked(self, board, col, row, att_or_stop):
+        print "col",col,"row",row
+        col_p = col
+        row_p = row
+        while self.board[col_p][7-row_p].__repr__() != "0":
+              col_p += 1
+              row_p += 1
+              print col_p, row_p
+              if col_p > 7 or row_p > 7:
+                  print "break"
+                  break
+              else:
+                  attack_cell(board, col_p, row_p, att_or_stop)
+
+        col_p = col
+        row_m = row
+        while self.board[col_p][7-row_m].__repr__() != "0":
+              col_p += 1
+              row_m -= 1
+              if col_p > 7 or row_m < 0:
+                  break
+              else:
+                  attack_cell(board, col_p, row_m, att_or_stop)
+
+        col_m = col
+        row_p = row
+        while self.board[col_m][7-row_p].__repr__() != "0":
+              col_m -= 1
+              row_p += 1
+              if col_m < 0 or row_p > 7:
+                  break
+              else:
+                  attack_cell(board, col_m, row_p, att_or_stop)
+
+        col_m = col
+        row_m = row
+        while self.board[col_m][7-row_m].__repr__() != "0":
+              col_m -= 1
+              row_m -= 1
+              if col_m < 0 or row_m < 0:
+                  break
+              else:
+                  attack_cell(board, col_m, row_m, att_or_stop)
+        return board
 
     def __repr__(self):
         return "B" + self.colour

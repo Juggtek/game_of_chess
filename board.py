@@ -38,15 +38,15 @@ class Board:
         for i in range(0,8):
             self.board[i][7-1].piece.cells_attacked(self.board_white_attack,i,1,"attack")
             self.board[i][7-6].piece.cells_attacked(self.board_black_attack,i,6,"attack")
-        # self.board[0][7-6].piece.cells_attacked(self.board_black_attack,0,6,"attack")
-        # self.board[1][7-0].piece.cells_attacked(1,7-0,"w")
-        # self.board[6][7-0].piece.cells_attacked(6,7-0,"w")
-        # self.board[1][7-7].piece.cells_attacked(1,7-7,"b")
-        # self.board[6][7-7].piece.cells_attacked(6,7-7,"b")
+        self.board[1][7-0].piece.cells_attacked(self.board_white_attack,1,0,"attack")
+        self.board[6][7-0].piece.cells_attacked(self.board_white_attack,6,0,"attack")
+        self.board[1][7-7].piece.cells_attacked(self.board_black_attack,1,7,"attack")
+        self.board[6][7-7].piece.cells_attacked(self.board_black_attack,6,7,"attack")
+        self.board[2][7-0].piece.cells_attacked(self.board_white_attack,2,0,"attack")
+        self.board[5][7-0].piece.cells_attacked(self.board_white_attack,5,0,"attack")
+        self.board[2][7-7].piece.cells_attacked(self.board_black_attack,2,7,"attack")
+        self.board[5][7-7].piece.cells_attacked(self.board_black_attack,5,0,"attack")
 
-
-
-        # TODO attack_board repr
 
     def move(self,from_col, from_row, to_col, to_row):
         if self.board[from_col][7-from_row].piece.try_movement(to_col, to_row):

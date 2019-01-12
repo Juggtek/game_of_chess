@@ -7,4 +7,4 @@ from board import Board, Cell
 board = Board()
 print board
 
-board.move(0,1,0,3)
+#board.move(3,1,3,3)
