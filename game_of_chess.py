@@ -6,3 +6,6 @@ from board import Board, Cell
 
 board = Board()
 print board
+
+board.move(0,0,3,0)
+board.move(3,0,3,3)

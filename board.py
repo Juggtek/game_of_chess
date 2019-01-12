@@ -14,21 +14,21 @@ class Board:
         self.board_white_attack = [[0 for i in range(8)] for j in range(8)]
         self.board_black_attack = [[0 for i in range(8)] for j in range(8)]
 
-        for i in range(0,8):
-            self.board[i][1].set_piece(Pawn(self.board,"P","w",i,1))
-            self.board[i][6].set_piece(Pawn(self.board,"P","b",i,6))
+        # for i in range(0,8):
+        #     self.board[i][1].set_piece(Pawn(self.board,"P","w",i,1))
+        #     self.board[i][6].set_piece(Pawn(self.board,"P","b",i,6))
         # self.board[1][0].set_piece(Knight(self.board,"N","w",1,0))
         # self.board[6][0].set_piece(Knight(self.board,"N","w",6,0))
         # self.board[1][7].set_piece(Knight(self.board,"N","b",1,7))
         # self.board[6][7].set_piece(Knight(self.board,"N","b",6,7))
-        self.board[2][0].set_piece(Bishop(self.board,"B","w",2,0))
-        self.board[5][0].set_piece(Bishop(self.board,"B","w",5,0))
-        self.board[2][7].set_piece(Bishop(self.board,"B","b",2,7))
-        self.board[5][7].set_piece(Bishop(self.board,"B","b",5,7))
-        # self.board[0][0].set_piece(Rook(self.board,"R","w",0,0))
-        # self.board[7][0].set_piece(Rook(self.board,"R","w",7,0))
-        # self.board[0][7].set_piece(Rook(self.board,"R","b",0,7))
-        # self.board[7][7].set_piece(Rook(self.board,"R","b",7,7))
+        # self.board[2][0].set_piece(Bishop(self.board,"B","w",2,0))
+        # self.board[5][0].set_piece(Bishop(self.board,"B","w",5,0))
+        # self.board[2][7].set_piece(Bishop(self.board,"B","b",2,7))
+        # self.board[5][7].set_piece(Bishop(self.board,"B","b",5,7))
+        self.board[0][0].set_piece(Rook(self.board,"R","w",0,0))
+        self.board[7][0].set_piece(Rook(self.board,"R","w",7,0))
+        self.board[0][7].set_piece(Rook(self.board,"R","b",0,7))
+        self.board[7][7].set_piece(Rook(self.board,"R","b",7,7))
         # self.board[3][0].set_piece(Queen(self.board,"Q","w",3,0))
         # self.board[3][7].set_piece(Queen(self.board,"Q","b",3,7))
         # self.board[4][0].set_piece(King(self.board,"K","w",4,0))
@@ -42,10 +42,14 @@ class Board:
         # self.board[6][0].piece.cells_attacked(self.board_white_attack,6,0,"attack")
         # self.board[1][7].piece.cells_attacked(self.board_black_attack,1,7,"attack")
         # self.board[6][7].piece.cells_attacked(self.board_black_attack,6,7,"attack")
-        self.board[2][0].piece.cells_attacked(self.board_white_attack,2,0,"attack")
-        self.board[5][0].piece.cells_attacked(self.board_white_attack,5,0,"attack")
-        self.board[2][7].piece.cells_attacked(self.board_black_attack,2,7,"attack")
-        self.board[5][7].piece.cells_attacked(self.board_black_attack,5,7,"attack")
+        # self.board[2][0].piece.cells_attacked(self.board_white_attack,2,0,"attack")
+        # self.board[5][0].piece.cells_attacked(self.board_white_attack,5,0,"attack")
+        # self.board[2][7].piece.cells_attacked(self.board_black_attack,2,7,"attack")
+        # self.board[5][7].piece.cells_attacked(self.board_black_attack,5,7,"attack")
+        self.board[0][0].piece.cells_attacked(self.board_white_attack,0,0,"attack")
+        self.board[7][0].piece.cells_attacked(self.board_white_attack,7,0,"attack")
+        self.board[0][7].piece.cells_attacked(self.board_black_attack,0,7,"attack")
+        self.board[7][7].piece.cells_attacked(self.board_black_attack,7,7,"attack")
 
 
     def move(self,from_col, from_row, to_col, to_row):
