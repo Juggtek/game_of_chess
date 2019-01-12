@@ -1,4 +1,7 @@
 from piece import Piece
+import sys
+sys.path.append('/home/felix/game_of_chess')
+from helper_func.attack_cell import attack_cell
 
 class King(Piece):
     def try_movement(self, to_col, to_row):
@@ -65,6 +68,16 @@ class King(Piece):
         else:
             print "else false"
             return False
+
+    def cells_attacked(self, board, col, row, att_or_stop):
+        attack_cell(board, col, row+1, att_or_stop)
+        attack_cell(board, col, row-1, att_or_stop)
+        attack_cell(board, col+1, row, att_or_stop)
+        attack_cell(board, col-1, row, att_or_stop)
+        attack_cell(board, col+1, row+1, att_or_stop)
+        attack_cell(board, col+1, row-1, att_or_stop)
+        attack_cell(board, col-1, row+1, att_or_stop)
+        attack_cell(board, col-1, row-1, att_or_stop)
 
     def __repr__(self):
         return "K" + self.colour

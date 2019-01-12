@@ -143,7 +143,7 @@ class Rook(Piece):
                     attack_cell(board, col_m, row, att_or_stop)
                     break
 
-
+        return board
 
     def __repr__(self):
         return "R" + self.colour

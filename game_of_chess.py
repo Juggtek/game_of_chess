@@ -7,5 +7,5 @@ from board import Board, Cell
 board = Board()
 print board
 
-board.move(0,0,3,0)
-board.move(3,0,3,3)
+board.move(4,0,4,1)
+board.move(4,1,4,2)
