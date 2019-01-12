@@ -1,6 +1,7 @@
 from piece import Piece
-#from board_attack import BoardAttack
-#board_attack = BoardAttack()
+import sys
+sys.path.append('/home/felix/game_of_chess')
+from helper_func.attack_cell import attack_cell
 
 class Pawn(Piece):
     def try_movement(self, to_col, to_row):
@@ -44,18 +45,15 @@ class Pawn(Piece):
     # TODO Transformation missing
     # TODO en passant
 
-    def cells_attacked(self, col, row, att_or_stop):
-        try:
-            if self.colour == "w":
-                self.board_attack.attack_cell(col+1, row+1, self.colour, att_or_stop)
-                self.board_attack.attack_cell(col-1, row+1, self.colour, att_or_stop)
-            else:
-                self.board_attack.attack_cell(col+1, row-1, self.colour, att_or_stop)
-                self.board_attack.attack_cell(col-1, row-1, self.colour, att_or_stop)
-        except IndexError:
-            pass
-        print board_attack
-        return board_attack
+    def cells_attacked(self, board, col, row, att_or_stop):
+        if self.colour == "w":
+            attack_cell(board, col+1, row+1, att_or_stop)
+            attack_cell(board, col-1, row+1, att_or_stop)
+        else:
+            attack_cell(board, col+1, row-1, att_or_stop)
+            attack_cell(board, col-1, row-1, att_or_stop)
+        return board
+
 
     def __repr__(self):
         return "P" + self.colour
