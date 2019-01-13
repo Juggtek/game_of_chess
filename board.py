@@ -61,20 +61,19 @@ class Board:
         board_pin = self.board
         if self.board[from_col][from_row].piece.try_movement(to_col, to_row):
 
-            if self.board[from_col][from_row].piece.colour == "w":
-                self.board[from_col][from_row].piece.cells_attacked(self.board_white_attack, from_col, from_row,"stop")
-            elif self.board[from_col][from_row].piece.colour == "b":
-                self.board[from_col][from_row].piece.cells_attacked(self.board_black_attack, from_col, from_row,"stop")
+            # if self.board[from_col][from_row].piece.colour == "w":
+            #     self.board[from_col][from_row].piece.cells_attacked(self.board_white_attack, from_col, from_row,"stop")
+            # elif self.board[from_col][from_row].piece.colour == "b":
+            #     self.board[from_col][from_row].piece.cells_attacked(self.board_black_attack, from_col, from_row,"stop")
 
             self.board[from_col][from_row].piece.movement(to_col, to_row)
+            if self.board[from_col][from_row].__repr__() != 0:
+                print_move_error()
 
-            if not piece_pin(board_pin, self.board[to_col][to_row].piece.colour):
-                print "Error"
-
-            if self.board[to_col][to_row].piece.colour == "w":
-                self.board[to_col][to_row].piece.cells_attacked(self.board_white_attack, to_col, to_row,"attack")
-            elif self.board[to_col][to_row].piece.colour == "b":
-                self.board[to_col][to_row].piece.cells_attacked(self.board_black_attack, to_col, to_row,"attack")
+            # if self.board[to_col][to_row].piece.colour == "w":
+            #     self.board[to_col][to_row].piece.cells_attacked(self.board_white_attack, to_col, to_row,"attack")
+            # elif self.board[to_col][to_row].piece.colour == "b":
+            #     self.board[to_col][to_row].piece.cells_attacked(self.board_black_attack, to_col, to_row,"attack")
 
             print self.__repr__()
         else:
