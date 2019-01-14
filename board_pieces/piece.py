@@ -9,8 +9,8 @@ class Piece(Cell):
         self.colour = colour
         self.col = col
         self.row = row
-        self.move_count = 0
         self.board = board
+        self.move_count = 0
 
     def movement(self, to_col, to_row):
         self.board[self.col][self.row].set_piece(None)
