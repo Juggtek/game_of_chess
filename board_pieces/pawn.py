@@ -92,13 +92,13 @@ class Pawn(Piece):
 
     # TODO Transformation missing
 
-    def cells_attacked(self, board, col, row, att_or_stop):
+    def cells_attacked(self, board, col, row):
         if self.colour == "w":
-            attack_cell(board, col+1, row+1, att_or_stop)
-            attack_cell(board, col-1, row+1, att_or_stop)
+            attack_cell(board, col+1, row+1)
+            attack_cell(board, col-1, row+1)
         else:
-            attack_cell(board, col+1, row-1, att_or_stop)
-            attack_cell(board, col-1, row-1, att_or_stop)
+            attack_cell(board, col+1, row-1)
+            attack_cell(board, col-1, row-1)
         return board
 
     def en_passant(self, board, colour, col, row):

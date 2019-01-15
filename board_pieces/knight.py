@@ -29,15 +29,15 @@ class Knight(Piece):
         else:
             return False
 
-    def cells_attacked(self, board, col, row, att_or_stop):
-        attack_cell(board, col+1, row+2, att_or_stop)
-        attack_cell(board, col+1, row-2, att_or_stop)
-        attack_cell(board, col+2, row+1, att_or_stop)
-        attack_cell(board, col+2, row-1, att_or_stop)
-        attack_cell(board, col-1, row+2, att_or_stop)
-        attack_cell(board, col-1, row-2, att_or_stop)
-        attack_cell(board, col-2, row+1, att_or_stop)
-        attack_cell(board, col-2, row-1, att_or_stop)
+    def cells_attacked(self, board, col, row):
+        attack_cell(board, col+1, row+2)
+        attack_cell(board, col+1, row-2)
+        attack_cell(board, col+2, row+1)
+        attack_cell(board, col+2, row-1)
+        attack_cell(board, col-1, row+2)
+        attack_cell(board, col-1, row-2)
+        attack_cell(board, col-2, row+1)
+        attack_cell(board, col-2, row-1)
         return board
 
     def __repr__(self):

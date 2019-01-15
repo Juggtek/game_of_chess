@@ -66,7 +66,7 @@ class King(Piece):
         elif (self.board[to_col][to_row].__repr__() != "0" and \
            self.board[to_col][to_row].__repr__()[1] == self.colour) or \
            (self.col == to_col and self.row == to_row) or \
-           castle(self.board, self.col, self.row, to_col, self.colour):
+           self.castle(self.board, self.col, self.row, to_col, self.colour):
             return False
 
         else:
@@ -78,25 +78,27 @@ class King(Piece):
         board_att = board_attack(board, colour)
 
         if (from_col > to_col and \
+           board_att[from_col][row] == 0 and \
            board_att[from_col-1][row] == 0 and \
            board_att[from_col-2][row] == 0 and \
            board_att[from_col-3][row] == 0) or \
            (from_col < to_col and \
+           board_att[from_col][row] == 0 and \
            board_att[from_col+1][row] == 0 and \
            board_att[from_col+2][row] == 0):
             return True
         else:
             return False
 
-    def cells_attacked(self, board, col, row, att_or_stop):
-        attack_cell(board, col, row+1, att_or_stop)
-        attack_cell(board, col, row-1, att_or_stop)
-        attack_cell(board, col+1, row, att_or_stop)
-        attack_cell(board, col-1, row, att_or_stop)
-        attack_cell(board, col+1, row+1, att_or_stop)
-        attack_cell(board, col+1, row-1, att_or_stop)
-        attack_cell(board, col-1, row+1, att_or_stop)
-        attack_cell(board, col-1, row-1, att_or_stop)
+    def cells_attacked(self, board, col, row):
+        attack_cell(board, col, row+1)
+        attack_cell(board, col, row-1)
+        attack_cell(board, col+1, row)
+        attack_cell(board, col-1, row)
+        attack_cell(board, col+1, row+1)
+        attack_cell(board, col+1, row-1)
+        attack_cell(board, col-1, row+1)
+        attack_cell(board, col-1, row-1)
 
     def __repr__(self):
         return "K" + self.colour

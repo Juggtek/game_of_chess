@@ -6,9 +6,10 @@ from board import Board, Cell
 board = Board()
 print board
 
-
-board.move(1,1,1,3)
-board.move(1,3,1,4)
-board.move(1,4,1,5)
-board.move(1,5,1,6)
-board.move(1,6,1,7)
+board.move(3,7,4,6)
+board.move(6,0,7,2)
+board.move(6,0,4,1)
+board.move(4,1,5,3)
+board.move(2,0,4,2)
+board.move(7,7,7,0)
+board.move(4,2,6,0)
