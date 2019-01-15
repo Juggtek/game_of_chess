@@ -4,7 +4,6 @@ import sys
 sys.path.append('/home/felix/game_of_chess')
 from helper_func.attack_cell import attack_cell
 from helper_func.board_attack import board_attack
-from helper_func.castle import castle
 
 class King(Piece):
     def try_movement(self, to_col, to_row):
@@ -44,7 +43,7 @@ class King(Piece):
            self.board[1][7].__repr__() == "0" and \
            self.board[0][7].__repr__() == "Rb" and \
            self.board[0][7].piece.move_count == 0)) and \
-           castle(self.board, self.col, self.row, to_col, self.colour):
+           self.castle(self.board, self.col, self.row, to_col, self.colour):
             self.board[0][self.row].piece.movement(3, self.row)
             return True
 
@@ -60,7 +59,7 @@ class King(Piece):
            self.board[6][7].__repr__() == "0" and \
            self.board[7][7].__repr__() == "Rb" and \
            self.board[7][7].piece.move_count == 0)) and \
-           castle(self.board, self.col, self.row, to_col, self.colour):
+           self.castle(self.board, self.col, self.row, to_col, self.colour):
             self.board[7][self.row].piece.movement(5, self.row)
             return True
 
@@ -74,6 +73,20 @@ class King(Piece):
             return False
 
 # TODO check!
+
+    def castle(self, board, from_col, row, to_col, colour):
+        board_att = board_attack(board, colour)
+
+        if (from_col > to_col and \
+           board_att[from_col-1][row] == 0 and \
+           board_att[from_col-2][row] == 0 and \
+           board_att[from_col-3][row] == 0) or \
+           (from_col < to_col and \
+           board_att[from_col+1][row] == 0 and \
+           board_att[from_col+2][row] == 0):
+            return True
+        else:
+            return False
 
     def cells_attacked(self, board, col, row, att_or_stop):
         attack_cell(board, col, row+1, att_or_stop)
