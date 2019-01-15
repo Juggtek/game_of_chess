@@ -7,10 +7,8 @@ board = Board()
 print board
 
 
-board.move(3,1,3,3)
-board.move(4,6,4,4)
-board.move(4,4,3,3)
-board.move(4,1,4,3)
-board.move(4,3,4,4)
-board.move(5,6,5,4)
-board.move(4,4,5,5)
+board.move(1,1,1,3)
+board.move(1,3,1,4)
+board.move(1,4,1,5)
+board.move(1,5,1,6)
+board.move(1,6,1,7)

@@ -16,7 +16,7 @@ class Board:
 
         for i in range(0,8):
             self.board[i][1].set_piece(Pawn(self.board,"P","w",i,1))
-            self.board[i][6].set_piece(Pawn(self.board,"P","b",i,6))
+            #self.board[i][6].set_piece(Pawn(self.board,"P","b",i,6))
         # self.board[1][0].set_piece(Knight(self.board,"N","w",1,0))
         # self.board[6][0].set_piece(Knight(self.board,"N","w",6,0))
         # self.board[1][7].set_piece(Knight(self.board,"N","b",1,7))
@@ -30,7 +30,7 @@ class Board:
         # self.board[0][7].set_piece(Rook(self.board,"R","b",0,7))
         # self.board[7][7].set_piece(Rook(self.board,"R","b",7,7))
         # self.board[3][0].set_piece(Queen(self.board,"Q","w",3,0))
-        self.board[3][7].set_piece(Queen(self.board,"Q","b",3,7))
+        # self.board[3][7].set_piece(Queen(self.board,"Q","b",3,7))
         self.board[4][0].set_piece(King(self.board,"K","w",4,0))
         self.board[4][7].set_piece(King(self.board,"K","b",4,7))
 

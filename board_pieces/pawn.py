@@ -1,5 +1,9 @@
 from piece import Piece
 from piece_pin import piece_pin
+from board_pieces.knight import Knight
+from board_pieces.bishop import Bishop
+from board_pieces.rook import Rook
+from board_pieces.queen import Queen
 import sys
 sys.path.append('/home/felix/game_of_chess')
 from helper_func.attack_cell import attack_cell
@@ -24,6 +28,18 @@ class Pawn(Piece):
                self.board[to_col][to_row].__repr__() != "0" and \
                self.board[to_col][to_row].piece.colour == "b" and \
                (to_col == self.col + 1 or to_col == self.col - 1) and to_row == self.row + 1):
+                if to_row == 7:
+                    piece = input("Q R N B (1 2 3 4)? ")
+                    if piece == 1:
+                        self.board[self.col][self.row].set_piece(Queen(self.board,"Q","w",self.col,self.row))
+                    elif piece == 2:
+                        self.board[self.col][self.row].set_piece(Rook(self.board,"R","w",self.col,self.row))
+                    elif piece == 3:
+                        self.board[self.col][self.row].set_piece(Knight(self.board,"N","w",self.col,self.row))
+                    elif piece == 4:
+                        self.board[self.col][self.row].set_piece(Bishop(self.board,"B","w",self.col,self.row))
+                    else:
+                        print "No piece selected"
                 return True
 
             elif to_row == self.row + 1 and \
@@ -49,6 +65,18 @@ class Pawn(Piece):
                self.board[to_col][to_row].__repr__() != "0" and \
                self.board[to_col][to_row].piece.colour == "w" and \
                (to_col == self.col + 1 or to_col == self.col - 1) and to_row == self.row - 1):
+                if to_row == 0:
+                    piece = upper(input("Q R N B (1 2 3 4)? "))
+                    if piece == 1:
+                        self.board[self.col][self.row].set_piece(Queen(self.board,"Q","b",self.col,self.row))
+                    elif piece == 2:
+                        self.board[self.col][self.row].set_piece(Rook(self.board,"R","b",self.col,self.row))
+                    elif piece == 3:
+                        self.board[self.col][self.row].set_piece(Knight(self.board,"N","b",self.col,self.row))
+                    elif piece == 4:
+                        self.board[self.col][self.row].set_piece(Bishop(self.board,"B","b",self.col,self.row))
+                    else:
+                        print "No piece selected"
                 return True
 
             elif to_row == self.row - 1 and \
@@ -56,6 +84,7 @@ class Pawn(Piece):
                self.en_passant_attack(self.board, self.col, self.row, to_col, to_row, self.colour):
                 self.board[to_col][to_row+1].set_piece(None)
                 return True
+
             else:
                 return False
         else:
