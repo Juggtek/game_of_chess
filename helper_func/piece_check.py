@@ -1,6 +1,6 @@
 from board_attack import board_attack
 
-def piece_pin(board, colour):
+def piece_check(board, colour):
     board_att =  board_attack(board, colour)
     for col in range(8):
         for row in range(8):

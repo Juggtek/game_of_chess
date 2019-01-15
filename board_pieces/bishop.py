@@ -46,22 +46,22 @@ class Bishop(Piece):
                 break
         return bool
 
-    def cells_attacked(self, board, col, row, att_or_stop):
+    def cells_attacked(self, board, col, row):
         col_p = col+1
         row_p = row+1
         if col_p > 7 or row_p > 7:
             pass
         elif self.board[col_p][row_p].__repr__() != "0":
-            attack_cell(board, col_p, row_p, att_or_stop)
+            attack_cell(board, col_p, row_p)
         else:
             while self.board[col_p][row_p].__repr__() == "0":
-                attack_cell(board, col_p, row_p, att_or_stop)
+                attack_cell(board, col_p, row_p)
                 col_p += 1
                 row_p += 1
                 if col_p > 7 or row_p > 7:
                     break
                 elif self.board[col_p][row_p].__repr__() != "0":
-                    attack_cell(board, col_p, row_p, att_or_stop)
+                    attack_cell(board, col_p, row_p)
                     break
 
         col_p = col+1
@@ -69,16 +69,16 @@ class Bishop(Piece):
         if col_p > 7 or row_m < 0:
             pass
         elif self.board[col_p][row_m].__repr__() != "0":
-            attack_cell(board, col_p, row_m, att_or_stop)
+            attack_cell(board, col_p, row_m)
         else:
             while self.board[col_p][row_m].__repr__() == "0":
-                attack_cell(board, col_p, row_m, att_or_stop)
+                attack_cell(board, col_p, row_m)
                 col_p += 1
                 row_m -= 1
                 if col_p > 7 or row_m < 0:
                     break
                 elif self.board[col_p][row_m].__repr__() != "0":
-                    attack_cell(board, col_p, row_m, att_or_stop)
+                    attack_cell(board, col_p, row_m)
                     break
 
         col_m = col-1
@@ -86,16 +86,16 @@ class Bishop(Piece):
         if col_m < 0 or row_p > 7:
             pass
         elif self.board[col_m][row_p].__repr__() != "0":
-            attack_cell(board, col_m, row_p, att_or_stop)
+            attack_cell(board, col_m, row_p)
         else:
             while self.board[col_m][row_p].__repr__() == "0":
-                attack_cell(board, col_m, row_p, att_or_stop)
+                attack_cell(board, col_m, row_p)
                 col_m -= 1
                 row_p += 1
                 if col_m < 0 or row_p > 7:
                     break
                 elif self.board[col_m][row_p].__repr__() != "0":
-                    attack_cell(board, col_m, row_p, att_or_stop)
+                    attack_cell(board, col_m, row_p)
                     break
 
         col_m = col-1
@@ -103,16 +103,16 @@ class Bishop(Piece):
         if col_m < 0 or row_m < 0:
             pass
         elif self.board[col_m][row_m].__repr__() != "0":
-            attack_cell(board, col_m, row_m, att_or_stop)
+            attack_cell(board, col_m, row_m)
         else:
             while self.board[col_m][row_m].__repr__() == "0":
-                attack_cell(board, col_m, row_m, att_or_stop)
+                attack_cell(board, col_m, row_m)
                 col_m -= 1
                 row_m -= 1
                 if col_m < 0 or row_m < 0:
                     break
                 elif self.board[col_m][row_m].__repr__() != "0":
-                    attack_cell(board, col_m, row_m, att_or_stop)
+                    attack_cell(board, col_m, row_m)
                     break
 
         return board
