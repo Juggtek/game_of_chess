@@ -1,5 +1,4 @@
 from piece import Piece
-from piece_pin import piece_pin
 from board_pieces.knight import Knight
 from board_pieces.bishop import Bishop
 from board_pieces.rook import Rook
@@ -7,7 +6,6 @@ from board_pieces.queen import Queen
 import sys
 sys.path.append('/home/felix/game_of_chess')
 from helper_func.attack_cell import attack_cell
-from helper_func.piece_pin import piece_pin
 
 class Pawn(Piece):
     en_passant_attackable = False
