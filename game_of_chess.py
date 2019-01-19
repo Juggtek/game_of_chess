@@ -20,34 +20,82 @@ class Window(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = []
-        frame = StartBoard(container, self)
+        frame = Board(container, self)
         self.frames.append(frame)
         frame.grid(column=0, row=0, sticky="nsew")
 
-        self.show_frame(0)
+        self.show_frame()
 
-    def show_frame(self, turn):
-        frame = self.frames[turn]
+        # while True:
+        #     if frame.check_input():
+        #         turn = frame.turn
+        #         board.move(turn[0][0], turn[0][1], turn[1][0], turn[1][1])
+        #         frame = Board(container, self)
+        #         frame.turn = []
+        #         self.frames.append(frame)
+        #         frame.grid(column=0, row=0, sticky="nsew")
+        #         self.show_frame()
+        #         break
+        #     else:
+        #         pass
+        #         print "passed"
+
+    def show_frame(self):
+        frame = self.frames[-1]
         frame.tkraise()
 
-class StartBoard(tk.Frame):
+    # def button_command(self, cell):
+    #     print "x", cell.winfo_rootx()
+    #     print "y", cell.winfo_rooty()
+
+class Board(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.turn = []
 
         for col in range(8):
             for row in range(8):
                 cell_input = board.__getitem__(col, row)
+
                 if cell_input == "0":
                     cell_input = "".ljust(6)
                 else:
                     cell_input.ljust(6)
                 if float(col+row) % 2 > 0:
-                    cell = tk.Button(self, text=cell_input, bg="white", relief="flat", takefocus="off")
+                    cell = self.button_def(cell_input, "white")
                     cell.grid(column=col, row=row)
                 else:
-                    cell = tk.Button(self, text=cell_input, bg="lightblue", relief="flat", takefocus="off")
+                    cell = self.button_def(cell_input, "lightblue")
                     cell.grid(column=col, row=row)
+
+    def check_input(self):
+        if len(self.turn) == 2:
+            return True
+        else:
+            return False
+
+    def button_def(self, cell_input, colour):
+        tk.Button(self, text=cell_input, bg=colour, relief="flat", takefocus="off", command= self.button_command(cell))
+        return
+
+    def button_command(self, cell):
+        x, y = self.cell.winfo_rootx(), self.cell.winfo_rooty()
+        print "x", cell.winfo_rootx()
+        print "y", cell.winfo_rooty()
+
+
+    # def move_command(self, col, row):
+    #     self.turn.append([col,row])
+    #     print "self.turn", self.turn
+            # if len(self.turn) == 2:
+            #     board.move(self.turn[0][0], self.turn[0][1], self.turn[1][0], self.turn[1][1])
+            #     self.turn = []
+
+
+
+
+
     #     self.frames = {}
     #     frame = Start(container, self)
     #     self.frames[Start] = frame
@@ -79,4 +127,5 @@ class StartBoard(tk.Frame):
 
 #root.geometry("400x400")
 app= Window()
+app.geometry("400x400")
 app.mainloop()
