@@ -1,2 +1,2 @@
 def print_move_error():
-    print "Invalid movement!"
+    print "\n" + "Invalid movement!" + "\n"

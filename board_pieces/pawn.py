@@ -1,5 +1,4 @@
 from piece import Piece
-from piece_pin import piece_pin
 from board_pieces.knight import Knight
 from board_pieces.bishop import Bishop
 from board_pieces.rook import Rook
@@ -7,7 +6,6 @@ from board_pieces.queen import Queen
 import sys
 sys.path.append('/home/felix/game_of_chess')
 from helper_func.attack_cell import attack_cell
-from helper_func.piece_pin import piece_pin
 
 class Pawn(Piece):
     en_passant_attackable = False
@@ -39,7 +37,7 @@ class Pawn(Piece):
                     elif piece == 4:
                         self.board[self.col][self.row].set_piece(Bishop(self.board,"B","w",self.col,self.row))
                     else:
-                        print "No piece selected"
+                        return False
                 return True
 
             elif to_row == self.row + 1 and \
@@ -76,7 +74,7 @@ class Pawn(Piece):
                     elif piece == 4:
                         self.board[self.col][self.row].set_piece(Bishop(self.board,"B","b",self.col,self.row))
                     else:
-                        print "No piece selected"
+                        return False
                 return True
 
             elif to_row == self.row - 1 and \
@@ -102,7 +100,6 @@ class Pawn(Piece):
         return board
 
     def en_passant(self, board, colour, col, row):
-        print col, row
         if (colour == "w" and row == 1 and \
            ((col == 0 and board[1][3].__repr__() == "Pb") or \
            (col == 7 and board[6][3].__repr__() == "Pb") or \

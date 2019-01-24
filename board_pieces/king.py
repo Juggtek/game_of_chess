@@ -1,5 +1,4 @@
 from piece import Piece
-from piece_pin import piece_pin
 import sys
 sys.path.append('/home/felix/game_of_chess')
 from helper_func.attack_cell import attack_cell

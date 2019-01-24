@@ -13,46 +13,59 @@ from board_pieces.king import King
 class Board:
     def __init__(self):
         self.board = [[Cell() for i in range(8)] for j in range(8)]
+        self.turn = 1
 
-        # for i in range(0,8):
-        #     self.board[i][1].set_piece(Pawn(self.board,"P","w",i,1))
-        #     self.board[i][6].set_piece(Pawn(self.board,"P","b",i,6))
-        # self.board[1][0].set_piece(Knight(self.board,"N","w",1,0))
+        for i in range(0,8):
+            self.board[i][1].set_piece(Pawn(self.board,"P","w",i,1))
+            self.board[i][6].set_piece(Pawn(self.board,"P","b",i,6))
+        self.board[1][0].set_piece(Knight(self.board,"N","w",1,0))
         self.board[6][0].set_piece(Knight(self.board,"N","w",6,0))
-        # self.board[1][7].set_piece(Knight(self.board,"N","b",1,7))
-        # self.board[6][7].set_piece(Knight(self.board,"N","b",6,7))
+        self.board[1][7].set_piece(Knight(self.board,"N","b",1,7))
+        self.board[6][7].set_piece(Knight(self.board,"N","b",6,7))
         self.board[2][0].set_piece(Bishop(self.board,"B","w",2,0))
-        # self.board[5][0].set_piece(Bishop(self.board,"B","w",5,0))
-        # self.board[2][7].set_piece(Bishop(self.board,"B","b",2,7))
-        # self.board[5][7].set_piece(Bishop(self.board,"B","b",5,7))
-        # self.board[0][0].set_piece(Rook(self.board,"R","w",0,0))
+        self.board[5][0].set_piece(Bishop(self.board,"B","w",5,0))
+        self.board[2][7].set_piece(Bishop(self.board,"B","b",2,7))
+        self.board[5][7].set_piece(Bishop(self.board,"B","b",5,7))
+        self.board[0][0].set_piece(Rook(self.board,"R","w",0,0))
         self.board[7][0].set_piece(Rook(self.board,"R","w",7,0))
-        # self.board[0][7].set_piece(Rook(self.board,"R","b",0,7))
+        self.board[0][7].set_piece(Rook(self.board,"R","b",0,7))
         self.board[7][7].set_piece(Rook(self.board,"R","b",7,7))
-        # self.board[3][0].set_piece(Queen(self.board,"Q","w",3,0))
+        self.board[3][0].set_piece(Queen(self.board,"Q","w",3,0))
         self.board[3][7].set_piece(Queen(self.board,"Q","b",3,7))
         self.board[4][0].set_piece(King(self.board,"K","w",4,0))
         self.board[4][7].set_piece(King(self.board,"K","b",4,7))
 
     def move(self,from_col, from_row, to_col, to_row):
-        print "Move from %s %s to %s %s" % (from_col, from_row, to_col, to_row)
-        if self.board[from_col][from_row].piece.try_movement(to_col, to_row):
+        if self.board[from_col][from_row].piece == None or \
+           (self.board[from_col][from_row].piece.colour == "w" and self.turn != 1) or \
+           (self.board[from_col][from_row].piece.colour == "b" and self.turn != -1):
+            return False
+        # print "Move from %s %s to %s %s" % (from_col, from_row, to_col, to_row)
+        elif self.board[from_col][from_row].piece.try_movement(to_col, to_row):
             if piece_check(self.board, self.board[from_col][from_row].piece.colour):
                 self.board[from_col][from_row].piece.movement(to_col, to_row)
                 if piece_check(self.board, self.board[to_col][to_row].piece.colour):
                     self.board[to_col][to_row].piece.movement(from_col, from_row)
                     self.board[from_col][from_row].piece.move_count -= 2
-                    print_move_error()
+                    #print_move_error()
+                    return False
+                else:
+                    print self.__repr__()
+                    self.turn *= -1
+                    return True
             else:
                 self.board[from_col][from_row].piece.movement(to_col, to_row)
                 if piece_check(self.board, self.board[to_col][to_row].piece.colour):
                     self.board[to_col][to_row].piece.movement(from_col, from_row)
                     self.board[from_col][from_row].piece.move_count -= 2
-                    print_move_error()
-            print self.__repr__()
+                    return False
+                else:
+                    print self.__repr__()
+                    self.turn *= -1
+                    return True
         else:
-            print_move_error()
             print self.__repr__()
+            return False
 
     def __repr__(self):
         board = ""
@@ -62,11 +75,11 @@ class Board:
             board += "\n"
         board += "\n"
 
-        board_att = ""
-        for row in range(8):
-            for col in range(8):
-                board_att += "%s%s".ljust(5) % (board_attack(self.board,"b")[col][7-row], board_attack(self.board,"w")[col][7-row])
-            board_att += "\n"
-        board_att += "\n"
+        # board_att = ""
+        # for row in range(8):
+        #     for col in range(8):
+        #         board_att += "%s%s".ljust(5) % (board_attack(self.board,"b")[col][7-row], board_attack(self.board,"w")[col][7-row])
+        #     board_att += "\n"
+        # board_att += "\n"
 
-        return "\n" + board + "\n" + board_att + "\n"
+        return "\n" + board + "\n" #+ board_att + "\n"
