@@ -74,10 +74,11 @@ class Board:
     def __repr__(self):
         board = ""
         for row in range(8):
+            board += str(8-row) + " "
             for col in range(8):
                 board += get_piece_initials(self.board[col][7-row]).ljust(3)
             board += "\n"
-        board += "\n"
+        board += "  A " + " B " + " C " + " D " + " E " + " F " + " G " + " H " +  "\n"
 
         # board_att = ""
         # for row in range(8):
