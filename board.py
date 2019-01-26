@@ -68,6 +68,9 @@ class Board:
             print_move_error()
             return False
 
+    def __getitem__(self, col, row):
+        return self.board[col][row].__repr__()
+
     def __repr__(self):
         board = ""
         for row in range(8):
