@@ -47,7 +47,7 @@ class Board:
                 if piece_check(self.board, self.board[to_col][to_row].piece.colour):
                     self.board[to_col][to_row].piece.movement(from_col, from_row)
                     self.board[from_col][from_row].piece.move_count -= 2
-                    #print_move_error()
+                    print_move_error()
                     return False
                 else:
                     print self.__repr__()
@@ -58,13 +58,14 @@ class Board:
                 if piece_check(self.board, self.board[to_col][to_row].piece.colour):
                     self.board[to_col][to_row].piece.movement(from_col, from_row)
                     self.board[from_col][from_row].piece.move_count -= 2
+                    print_move_error()
                     return False
                 else:
                     print self.__repr__()
                     self.turn *= -1
                     return True
         else:
-            print self.__repr__()
+            print_move_error()
             return False
 
     def __repr__(self):
