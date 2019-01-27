@@ -37,11 +37,12 @@ class Pawn(Piece):
                     elif piece == 4:
                         self.board[self.col][self.row].set_piece(Bishop(self.board,"B","w",self.col,self.row))
                     else:
-                        return False
+                        print "No piece selected"
                 return True
 
             elif to_row == self.row + 1 and \
                (to_col == self.col + 1 or to_col == self.col - 1) and \
+               self.board[to_col][self.row].__repr__() != "0" and \
                self.en_passant_attack(self.board, self.col, self.row, to_col, to_row, self.colour):
                 self.board[to_col][to_row-1].set_piece(None)
                 return True
@@ -74,11 +75,12 @@ class Pawn(Piece):
                     elif piece == 4:
                         self.board[self.col][self.row].set_piece(Bishop(self.board,"B","b",self.col,self.row))
                     else:
-                        return False
+                        print "No piece selected"
                 return True
 
             elif to_row == self.row - 1 and \
                (to_col == self.col + 1 or to_col == self.col - 1) and \
+               self.board[to_col][self.row].__repr__() != "0" and \
                self.en_passant_attack(self.board, self.col, self.row, to_col, to_row, self.colour):
                 self.board[to_col][to_row+1].set_piece(None)
                 return True
@@ -87,8 +89,6 @@ class Pawn(Piece):
                 return False
         else:
             return False
-
-    # TODO Transformation missing
 
     def cells_attacked(self, board, col, row):
         if self.colour == "w":
@@ -110,6 +110,7 @@ class Pawn(Piece):
            (col == 7 and board[6][4].__repr__() == "Pw") or \
            (col > 0 and col < 7 and (board[col+1][4].__repr__() == "Pw" or board[col-1][4].__repr__() == "Pw"))) \
            ):
+            print col, row, "en_p_a", colour
             self.board[col][row].piece.en_passant_attackable = True
         else:
             self.board[col][row].piece.en_passant_attackable = False
@@ -125,14 +126,7 @@ class Pawn(Piece):
            ((from_col == 0 and board[1][3].piece.en_passant == True) or \
            (from_col == 7 and board[6][3].piece.en_passant == True) or \
            (from_col > 0 and from_col < 7 and board[to_col][3].piece.en_passant_attackable == True))):
-
-            self.board[from_col][from_row].piece.movement(to_row, to_col)
-            if self.board[from_col][from_row].__repr__() != "0":
-                return False
-            else:
-                self.board[to_col][to_row].piece.movement(from_row, from_col)
-                self.board[from_col][from_row].piece.move_count -= 2
-                return True
+            return True
         else:
             return False
 

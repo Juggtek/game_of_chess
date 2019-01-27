@@ -9,45 +9,56 @@ board = Board()
 print board
 
 
-def check_input(cell):
-    if ((cell[0].lower() == "a") or \
-       (cell[0].lower() == "b") or \
-       (cell[0].lower() == "c") or \
-       (cell[0].lower() == "d") or \
-       (cell[0].lower() == "e") or \
-       (cell[0].lower() == "f") or \
-       (cell[0].lower() == "g") or \
-       (cell[0].lower() == "h")) and \
+def transform_input(cell):
+    if (cell[0] == "1" or \
+       cell[0] == "2" or \
+       cell[0] == "3" or \
+       cell[0] == "4" or \
+       cell[0] == "5" or \
+       cell[0] == "6" or \
+       cell[0] == "7" or \
+       cell[0] == "8") and \
        (int(cell[1]) > 0 and int(cell[1]) < 9):
-        return True
+        return "%s%s" % (int(cell[0])-1, int(cell[1])-1)
+    elif (cell[0].lower() == "a" or \
+       cell[0].lower() == "b" or \
+       cell[0].lower() == "c" or \
+       cell[0].lower() == "d" or \
+       cell[0].lower() == "e" or \
+       cell[0].lower() == "f" or \
+       cell[0].lower() == "g" or \
+       cell[0].lower() == "h") and \
+       (int(cell[1]) > 0 and int(cell[1]) < 9):
+        return "%s%s" % (ord(cell[0].lower()) - 97, int(cell[1])-1)
     else:
-        return False
+        print_move_error()
 
 while True:
     from_col_row = raw_input("From column/row: ")
     to_col_row = raw_input("To column/row: ")
-    if check_input(from_col_row) and check_input(from_col_row):
-        from_row =  int(from_col_row[1]) - 1
-        from_col = ord(from_col_row[0].lower()) - 97
-        to_row =  int(to_col_row[1]) - 1
-        to_col = ord(to_col_row[0].lower()) - 97
-        board.move(from_col, from_row, to_col, to_row)
+    if len(from_col_row) == 2 and len(to_col_row) == 2:
+        from_trans = transform_input(from_col_row)
+        to_trans = transform_input(to_col_row)
+        temp_board = board.move(int(from_trans[0]), int(from_trans[1]), int(to_trans[0]), int(to_trans[1]))
     else:
         print_move_error()
 
-#
 # while True:
-#
 #     from_col_row = raw_input("From column/row: ")
 #     to_col_row = raw_input("To column/row: ")
-#     print "t", transform(from_col_row)
-#     print check_input(to_col_row) == True
-#     if (check_input(from_col_row) and check_input(to_col_row)) == True:
-#         trans_from = transform(from_col_row)
-#         trans_to = transform(to_col_row)
-#         board.move(trans_from[0],trans_from[1],trans_to[0],trans_to[1])
+#     if check_input(from_col_row) and check_input(from_col_row):
+#         if isinstance(from_col_row[0], str) and isinstance(to_col_row[0], str):
+#             from_col = int(from_col_row[0]) - 1
+#             to_col = int(to_col_row[0]) - 1
+#         else:
+#             from_col = ord(from_col_row[0].lower()) - 97
+#             to_col = ord(to_col_row[0].lower()) - 97
+#         from_row =  int(from_col_row[1]) - 1
+#         to_row =  int(to_col_row[1]) - 1
+#         temp_board = board.move(from_col, from_row, to_col, to_row)
 #     else:
 #         print_move_error()
+
 
 # class Window(tk.Tk):
 #     def __init__(self, *args, **kwargs):

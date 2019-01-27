@@ -39,8 +39,8 @@ class Board:
         if self.board[from_col][from_row].piece == None or \
            (self.board[from_col][from_row].piece.colour == "w" and self.turn != 1) or \
            (self.board[from_col][from_row].piece.colour == "b" and self.turn != -1):
+            print_move_error()
             return False
-        # print "Move from %s %s to %s %s" % (from_col, from_row, to_col, to_row)
         elif self.board[from_col][from_row].piece.try_movement(to_col, to_row):
             if piece_check(self.board, self.board[from_col][from_row].piece.colour):
                 self.board[from_col][from_row].piece.movement(to_col, to_row)
